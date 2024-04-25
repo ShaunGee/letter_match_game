@@ -1,5 +1,5 @@
-import { Card_Pairs, Game_Session } from "./model.js";
-import {Card} from "./card.js";
+import { Card_Pairs, Game_Session, Card } from "./model.js";
+
 
 
 
@@ -9,12 +9,14 @@ fetch('/game.html')
         html=>{
             document.getElementById('game_container').innerHTML = html;
             game_init();
+            
+            
         
         }
     )
     .catch(error=>console.error('Error fetching content: ', error));
 
-    
+
     function game_init(){
         const game_session = new Game_Session;
         game_session.startGame()
@@ -25,7 +27,6 @@ fetch('/game.html')
     function randomNumCheck(rN, list){
         let t;
         if(list.length===0){
-            console.log('empty list.. returning true');
             return true;          
         }
         for (let i = 0; i <list.length; i++){
@@ -43,33 +44,63 @@ fetch('/game.html')
 
     function initialiseCardPairs(){
 
+        
         const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
         let alphabetList = [];
-        alphabet.forEach(letter=>alphabetList.push(new Card(letter)));
+        alphabet.forEach((letter,id)=>alphabetList.push(new Card(id,letter)));
 
         const numOfCards = 4;
         let gameCardIds = [];
-        console.log('called');
         
         for(let a = 0; a < numOfCards;){
-            //choose a random number between a and z index
             let randomID= Math.floor(Math.random() * alphabetList.length)
 
             if (randomNumCheck(randomID, gameCardIds)){
-                console.log(randomID + ' to be added');
                 gameCardIds.push(randomID);
                 a++
 
             }
 
         }
-        
-        //pick random index number in gameCardsIdsc
+
         let cardPair = new Card_Pairs(gameCardIds);
+        gameCardIds.forEach((id)=>{
+            alphabetList[id];
+
+            
+        } 
+        );
+    
+        
         cardPair.setSingleCard(Math.floor(Math.random() * gameCardIds.length));
-        console.log(gameCardIds)
+        //console.log(cardPair.getSingleCard());
+        populateGame();
+
+        function getLetter(id){
+            return alphabetList
+        }
+        
+    
+                                                      
+        function populateGame(){
+            //get top and bottom div
+            const topDiv = document.querySelectorAll('.sector_top_card_container');
+            const bottomDiv = document.getElementById('sector_bottom_card_container_1');
+
+            topDiv.innerHTML = 'sdfsdfsd'
+
+            topDiv.forEach((div,id)=>{
+                div.innerHTML = alphabetList[gameCardIds[id]].getLetter();
+
+            });
+
+            bottomDiv.innerHTML = alphabetList[cardPair.getCardLIst()[cardPair.getSingleCard()]].getLetter();
+            console.log(alphabetList[4].getLetter())
+
+
      
     }
+}
 
 
 

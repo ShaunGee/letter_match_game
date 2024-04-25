@@ -43,3 +43,22 @@ export class Card_Pairs{
         return this.singleCard;
     }
 }
+
+export class Card{
+    constructor(cardId, letter){
+        this.letter = letter;
+        this.card_id = cardId;
+    }
+
+    getLetter(){
+        return this.letter;
+    }
+
+    getCardID(){
+        return this.card_id;
+    }
+
+
+
+
+}
