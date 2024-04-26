@@ -97,10 +97,32 @@ fetch('/game.html')
             bottomDiv.innerHTML = alphabetList[cardPair.getCardLIst()[cardPair.getSingleCard()]].getLetter();
             
             //console.log(bottomDiv.offsetHeight);
+            //const topDiv = document.querySelectorAll('.sector_top_card_container');
+            
         
             
-            bottomDiv.addEventListener('dragend', (div)=>{
-                console.log(div.clientX);
+            bottomDiv.addEventListener('dragend', (event)=>{
+                //console.log(div.offsetX + bottomDiv.offsetLeft+(bottomDiv.offsetWidth/2));
+                console.log(event.clientY);
+               
+
+               
+               topDiv.forEach(td => {
+                 
+                    
+
+                    if ( bottomDiv.innerHTML === td.innerHTML && event.clientX >= td.offsetLeft && 
+                        event.clientX <= td.offsetLeft + td.offsetWidth && event.clientY >= td.offsetTop &&
+                        event.clientY <= (td.offsetTop + td.clientHeight)) {
+                            location.reload();
+                        
+                    }
+                    
+                    
+                    
+                });
+                
+                
                 
                 
             });
