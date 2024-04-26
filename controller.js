@@ -93,18 +93,20 @@ fetch('/game.html')
                 div.innerHTML = alphabetList[gameCardIds[id]].getLetter();
 
             });
-
+            //sets single letter
             bottomDiv.innerHTML = alphabetList[cardPair.getCardLIst()[cardPair.getSingleCard()]].getLetter();
-            console.log(alphabetList[4].getLetter())
+            
+            //console.log(bottomDiv.offsetHeight);
+        
+            
+            bottomDiv.addEventListener('dragend', (div)=>{
+                console.log(div.clientX);
+                
+                
+            });
+            
 
+        }
 
-     
-    }
+    
 }
-
-
-
-
-
-
-
