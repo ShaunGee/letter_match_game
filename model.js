@@ -1,21 +1,64 @@
-class Card{
-    constructor(letter){
-        this.letter = letter
+
+
+export class Game_Session {
+
+    constructor(){
+        this.game_active
     }
 
+    startGame(){
+         this.game_active = true;
+    }
+
+    stopGame(){
+        this.game_active = false;
+    }
+
+    getGameStatus(){
+        return this.game_active;
+    }
 }
 
-class Game_Session {
-    constructor(){
-        this.gameInSession;
+export class Card_Pairs{
+    constructor(cardList){
+        this.cardList = cardList;
+        this.singleCard;
     }
 
+    setCardList(cardList){
+        this.cardList = cardList
+    }
+    getCardLIst(){
+        return this.cardList;
+    }
+
+    deleteCardList(){
+        this.cardList = undefined;
+    }
+
+    setSingleCard(card){
+        this.singleCard = card;
+    }
+    getSingleCard(){
+        return this.singleCard;
+    }
 }
 
-class Card_Pairs{
-    constructor(){
-
+export class Card{
+    constructor(cardId, letter){
+        this.letter = letter;
+        this.card_id = cardId;
     }
 
-    
+    getLetter(){
+        return this.letter;
+    }
+
+    getCardID(){
+        return this.card_id;
+    }
+
+
+
+
 }
