@@ -114,7 +114,18 @@ fetch('/game.html')
                     if ( bottomDiv.innerHTML === td.innerHTML && event.clientX >= td.offsetLeft && 
                         event.clientX <= td.offsetLeft + td.offsetWidth && event.clientY >= td.offsetTop &&
                         event.clientY <= (td.offsetTop + td.clientHeight)) {
-                            location.reload();
+                            //location.reload();
+                           td.style.backgroundColor = 'green';
+                            
+                          setTimeout(()=>{
+                            td.style.backgroundColor = 'rgb(221, 183, 183)';
+                            game_init();
+                          },1000);
+
+                           //td.style.backgroundColor = rgb(221, 183, 183);
+                            
+                           
+                            
                         
                     }
                     
